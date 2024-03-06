@@ -16,16 +16,16 @@ categories = %w[chinese italian japanese french belgian]
 
 5.times do
   restaurant = Restaurant.create!({
-                                    name: Faker::Lorem.sentence,
+                                    name: Faker::Restaurant.name,
                                     address: Faker::Address.full_address,
                                     phone_number: Faker::PhoneNumber.phone_number,
-                                    category: categories[rand(0..(categories.length - 1))]
+                                    category: categories.sample
                                   })
 
   rand(1..5).times do
     @review = Review.create!({
                                rating: rand(0..5),
-                               content: Faker::Lorem.sentence,
+                               content: Faker::Restaurant.review,
                                restaurant_id: restaurant.id
                              })
   end
